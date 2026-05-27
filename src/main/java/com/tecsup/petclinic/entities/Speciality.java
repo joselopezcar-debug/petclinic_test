@@ -3,7 +3,7 @@ package com.tecsup.petclinic.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "specialities")
+@Table(name = "specialties")
 public class Speciality {
 
     @Id

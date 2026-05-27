@@ -1,5 +1,8 @@
 package com.tecsup.petclinic.entities;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,7 +13,18 @@ public class Visit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "pet_id")
+    private Integer petId;
+
+    @Column(name = "vet_id")
+    private Integer vetId;
+
+    @Column(name = "visit_date")
+    private LocalDate visitDate;
+
     private String description;
+
+    private BigDecimal cost;
 
     public Integer getId() {
         return id;
@@ -20,11 +34,43 @@ public class Visit {
         this.id = id;
     }
 
+    public Integer getPetId() {
+        return petId;
+    }
+
+    public void setPetId(Integer petId) {
+        this.petId = petId;
+    }
+
+    public Integer getVetId() {
+        return vetId;
+    }
+
+    public void setVetId(Integer vetId) {
+        this.vetId = vetId;
+    }
+
+    public LocalDate getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(LocalDate visitDate) {
+        this.visitDate = visitDate;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
     }
 }

@@ -34,7 +34,10 @@ public class VisitServiceImpl implements VisitService {
     @Override
     public VisitDTO findById(Integer id) {
 
-        Visit entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Visit no encontrada con id: " + id));
+        Visit entity = repository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Visit no encontrado con id: " + id));
 
         return mapper.mapToDto(entity);
     }
@@ -42,13 +45,19 @@ public class VisitServiceImpl implements VisitService {
     @Override
     public List<VisitDTO> findAll() {
 
-        return repository.findAll().stream().map(mapper::mapToDto).collect(Collectors.toList());
+        return repository.findAll()
+                .stream()
+                .map(mapper::mapToDto)
+                .collect(Collectors.toList());
     }
 
     @Override
     public void delete(Integer id) {
 
-        Visit entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Visit no encontrada con id: " + id));
+        Visit entity = repository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Visit no encontrado con id: " + id));
 
         repository.delete(entity);
     }
